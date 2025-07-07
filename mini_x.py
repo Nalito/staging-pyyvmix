@@ -6,7 +6,7 @@ import moviepy.editor as mpy
 import random
 
 from extract_frames import VideoFrameExtractor
-from ef import FramePredictor
+from ran import FramePredictor
 from emo_trim import select_emotion
 
 st.title("Emotion-Based Video Merger")
@@ -48,7 +48,7 @@ if st.button("Process Videos"):
         predictions = []
         for out_folder in output_folders:
             # Use Mini-Xception grayscale model
-            predictor = FramePredictor("mini_xception.hdf5", out_folder)
+            predictor = FramePredictor(out_folder)
             predictions.append(predictor.predict_frames())
 
         # 3. Select emotion timestamps
